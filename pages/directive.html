@@ -1,10 +1,125 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-
-</body>
-</html>
+<div class="container">
+    <div class="page-header">
+        <h1>Directives</h1>
+    </div>
+    <div class="row">
+        <div class="panel-group col-md-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">ng-model</div>
+                <div class="panel-body">
+                    <label>Entrer quelque chose:</label>
+                    <input type="text" class="form-control" ng-model="something" placeholder="Enter a something here">
+                    <br>
+                    <h3>{{something}}</h3>
+                </div>
+            </div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">ng-init</div>
+                <div class="panel-body">
+                    <div ng-init="x='element initialiser'">
+                        <ul class="list-group">
+                            <li  class="list-group-item">
+                                {{x}}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">ng-repeat</div>
+                <div class="panel-body">
+                    <div ng-init="users1=['Marc', 'Jean', 'John']">
+                        <label>Liste de nom:</label>
+                        <ul class="list-group">
+                            <li ng-repeat="x in users1"  class="list-group-item">
+                                {{x}}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group col-md-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">ng-bind</div>
+                <div class="panel-body">
+                    <label>Entrer quelque chose:</label>
+                    <input type="text" class="form-control" ng-model="thing" placeholder="Enter a something here">
+                    <br>
+                    <h3 ng-bind="thing"></h3>
+                </div>
+            </div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">ng-click</div>
+                <div class="panel-body">
+                    <div>
+                        <label>Entrer quelque chose:</label>
+                        <input type="text" placeholder="Entrer quelque chose" class="form-control" ng-model="elt" />
+                        <br>
+                        <button ng-click="affich(elt)" class="btn btn-primary" type="button">Afficher</button>
+                        <p>{{element}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">Filtrer les données</div>
+                <div class="panel-body">
+                    <div ng-init="lists=['Marc', 'Jean', 'John']">
+                        <label>Entrer un nom:</label>
+                        <input type="text" class="form-control" ng-model="list" placeholder="Enter un nom de la liste">
+                        <br>
+                        <ul class="list-group">
+                            <li ng-repeat="x in lists | filter:list"  class="list-group-item">
+                                {{x}}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group col-md-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Filtrer par type</div>
+                <div class="panel-body">
+                    <div ng-init="json=[
+        {username:'Marc', content: 'je suis Marc' },{username:'jean', content: 'Je suis Jean' },{username:'John', content: 'Je suis john'}]">
+                        <input type="text" class="form-control" ng-model="que" placeholder="Enter un nom de la liste">
+                        <br>
+                        <select ng-model="order">
+                            <option></option>
+                            <option value="username"> Organiser par nom</option>
+                            <option value="content"> Organiser par content</option>
+                        </select>
+                        <br>
+                        <br>
+                        <ul class="list-group">
+                            <li  ng-repeat="user4 in json | filter:que | orderBy:order"  class="list-group-item">
+                                {{user4.username}}
+                                <ul class="list-group">
+                                    <li  class="list-group-item">
+                                        {{user4.content}}
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">ng-submit</div>
+                <div class="panel-body">
+                    <form ng-submit="affich(submit)">
+                        <label>Entrer quelque chose:</label>
+                        <input type="text" placeholder="Entrer quelque chose" class="form-control" ng-model="submit" />
+                        <br>
+                        <input class="btn btn-primary" type="submit" value="submit"/>
+                        <p>{{element}}</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-header">
+        <h1>Quelques Exemples</h1>
+    </div>
+</div>
