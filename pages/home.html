@@ -1,10 +1,147 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-
-</body>
-</html>
+<div class="container">
+    <div class="jumbotron">
+        <h1>Angular Multi-Tutorials</h1>
+        <p>Bienvenu sur notre page angular multi-tutorials vous pouvez bénéficier de la qualité de nos tutos et augmenter vos competences en angularjs en quelques minutes. </p>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="input-group input-group-search">
+                <input type="text" required="" ng-model="query" class="form-control" />
+            <span class="input-group-addon">
+              <button class="btn-search">
+                  <i class="glyphicon glyphicon-search"></i>
+              </button>
+            </span>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="col-md-2"></div>
+            <div class="col-md-6">
+                <input type="text" placeholder="Search" class="form-control" ng-model="nom" />
+            </div>
+            <button ng-click="search(nom)" class="btn btn-primary" type="button">Search</button>
+        </div>
+    </div>
+    <div class="row"></div>
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Formulaire Users</h2>
+            <div class="form-group">
+                <label>Id:</label>
+                <input type="text" ng-model="iduser" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>First Name:</label>
+                <input type="text" ng-model="firstname" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Last Name:</label>
+                <input type="text" ng-model="lastname" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Hobby:</label>
+                <input type="text" ng-model="hobby" class="form-control" />
+            </div>
+            <div class="row">
+                <button  class="btn btn-primary" type="button" ng-click="reset()">Annuler</button>
+                <button  class="btn btn-success" type="button" ng-click="addUsers()">Ajouter</button>
+                <button  class="btn btn-success" type="button" ng-click="modifUsers()">Modifier</button>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <table class="table table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Hobby</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-click="ClickedUsers($index)" ng-repeat="user in users | filter:query">
+                    <td>{{user.idus}}</td>
+                    <td>{{user.first_name}}</td>
+                    <td>{{user.last_name}}</td>
+                    <td>{{user.hobby}}</td>
+                    <td>
+                        <div class="row">
+                            <button data-target="#edit" data-toggle="modal" class="btn btn-info" type="button">Edit</button>
+                            <button ng-click="remove($index)" class="btn btn-danger" type="button">Delete</button>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-8">
+        <div class="col-md-2"></div>
+        <div class="col-md-6">
+            <input type="text" placeholder="Search" class="form-control" ng-model="finded" />
+        </div>
+        <button ng-click="searchName(finded)" class="btn btn-primary" type="button">Search</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-8">
+        <h3>Results</h3>
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Hobby</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="user in us">
+                <td>{{user.id}}</td>
+                <td>{{user.first_name}}</td>
+                <td>{{user.last_name}}</td>
+                <td>{{user.hobby}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- Modal -->
+<div role="dialog" id="edit" class="modal fade">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button data-dismiss="modal" class="close" type="button">×</button>
+                <h4 class="modal-title">Edit User</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Id:</label>
+                    <input type="text" ng-model="iduser" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>First Name:</label>
+                    <input type="text" ng-model="firstname" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Last Name:</label>
+                    <input type="text" ng-model="lastname" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Hobby:</label>
+                    <input type="text" ng-model="hobby" class="form-control" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button data-dismiss="modal" ng-click="modifUsers()" class="btn btn-success" type="button">Save</button>
+                <button data-dismiss="modal" class="btn btn-default" type="button" ng-click="reset()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
